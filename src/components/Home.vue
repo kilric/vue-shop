@@ -14,7 +14,10 @@
 			<el-aside :width="isCollapsed ? '65px' : '200px'">
 <!--				折叠菜单按钮   -->
 				<div class="toggle-button" @click="collapseMenu">|||</div>
+<!--				开启路由导航-->
 				<el-menu
+					:default-active="'/home/'+ this.$router.path"
+					:router="true"
 					:unique-opened="true"
 					background-color="#333744"
 					text-color="#fff"
@@ -29,7 +32,7 @@
 							<span>{{menuItem.authName}}</span>
 						</template>
 					<!--  菜单项  -->
-						<el-menu-item v-for="item in menuItem.children" :index="item.id +''" :key="item.id">
+						<el-menu-item v-for="item in menuItem.children" :index="item.path +''" :key="item.id">
 							<template slot="title">
 								<i class="el-icon-menu"/>
 								<span>{{item.authName}}</span>
@@ -41,7 +44,7 @@
 
 			<!--			内容区域       -->
 			<el-main>
-
+				<router-view/>
 			</el-main>
 		</el-container>
 	</el-container>

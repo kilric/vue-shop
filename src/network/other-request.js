@@ -13,7 +13,7 @@ export default function request(config) {
 	},error => {
 		console.log(error);
 	});
-
-	//真正的网络请求
+	// 真正的网络请求
+	// 返回一个Promise
 	return instance(config)
 }

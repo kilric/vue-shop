@@ -5,6 +5,9 @@ import 'element-ui/lib/theme-chalk/index.css'
 import Element from "less/lib/less/tree/element";
 import Login from "../components/Login";
 import Home from "../components/Home";
+import Welcome from "../components/Welcome";
+import Users from "../components/user/Users";
+import Goods from "../components/goods/Goods";
 
 Vue.use(VueRouter);
 Vue.use(ElementUI);
@@ -23,7 +26,28 @@ const routes = [
   {
     path: '/home',
     component: Home,
-    name: 'home'
+    name: 'home',
+    //在children外要加/home
+    redirect: '/home/welcome',
+    children:[
+      {
+        //不加/则url路径为/home/welcome
+        //加了/路径为/welcome
+        path: 'welcome',
+        name: 'welcome',
+        component: Welcome
+      },
+      {
+        path: 'users',
+        name: 'users',
+        component: Users
+      },
+      {
+        path: 'goods',
+        name: 'goods',
+        component: Goods
+      }
+    ]
   }
 ];
 
